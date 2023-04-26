@@ -1,6 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Bachelor_Thesis.Domain;
+using Bachelor_Thesis.Indexes;
 using Bachelor_Thesis.Services;
+using System.Diagnostics;
+using System.Reflection;
 
 string filePath = "../../../Files/fruits.txt";
 string inventoryFilePath = "../../../Files/Inventory.json";
@@ -13,7 +16,7 @@ var readingTask = Task.Factory.StartNew(() =>
 });
 
 
-var writingTask = Task.Factory.StartNew(() =>
+/*var writingTask = Task.Factory.StartNew(() =>
 {
     while (true)
     {
@@ -22,7 +25,20 @@ var writingTask = Task.Factory.StartNew(() =>
             Console.WriteLine(customObjects.Dequeue());
         }
     }
-});
+});*/
 
-Task.WaitAll(readingTask, writingTask);
+Task.WaitAll(readingTask);
+
+var hashIndex = new HashIndex<InventoryData>(new List<PropertyInfo> { new InventoryData().GetType().GetProperty("ProductId") });
+for (int i = 0; i < 1000; i++)
+{
+    hashIndex.AddElement(customObjects.Dequeue());
+}
+
+//hashIndex.RemoveFirstElementAdded();
+
+hashIndex.PrintIndex();
+
+int sdsad = 0;
+
 

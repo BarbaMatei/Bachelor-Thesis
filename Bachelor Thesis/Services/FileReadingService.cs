@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Bachelor_Thesis.Services
 {
@@ -12,7 +13,7 @@ namespace Bachelor_Thesis.Services
         private string _filePath;
         private int _timeOffSet;
 
-        public FileReadingService(string path, int timeOffSet = 1000)
+        public FileReadingService(string path, int timeOffSet = 1)
         {
             _filePath = path;
             _timeOffSet = timeOffSet;
@@ -22,16 +23,22 @@ namespace Bachelor_Thesis.Services
         {
             using(JsonDocument reader = JsonDocument.Parse(File.OpenRead(_filePath)))
             {
+                var sw = new Stopwatch();
+                sw.Start();
                 JsonElement root = reader.RootElement;
+                T? jsonElement;
                 foreach(JsonElement element in root.EnumerateArray())
                 {
-                    var jsonElement = JsonSerializer.Deserialize<T>(element.GetRawText());
+                    jsonElement = JsonSerializer.Deserialize<T>(element.GetRawText());
                     if(jsonElement != null)
                     {
+                        jsonElement.GetType().GetProperty("Timestamp").SetValue(jsonElement, DateTime.Now);
                         elements.Enqueue(jsonElement);
                     }
-                    Thread.Sleep(_timeOffSet);
+                    //Thread.Sleep(_timeOffSet);
                 }
+                Console.WriteLine("sync: Running for {0} seconds", sw.Elapsed.TotalSeconds);
+                Console.WriteLine("capacity: {0}", elements.Count);
             }
         }
     }

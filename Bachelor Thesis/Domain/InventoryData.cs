@@ -14,7 +14,7 @@ namespace Bachelor_Thesis.Domain
 
         public override string ToString()
         {
-            return string.Format("ProductId: {0}. QuantityToAdd: {1}", ProductId, QuantityToAdd);
+            return string.Format("ProductId: {0}. QuantityToAdd: {1}. Added at: {2}", ProductId, QuantityToAdd, Timestamp);
         }
     }
 }
