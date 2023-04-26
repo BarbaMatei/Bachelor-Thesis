@@ -8,4 +8,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Constants\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
 </Project>

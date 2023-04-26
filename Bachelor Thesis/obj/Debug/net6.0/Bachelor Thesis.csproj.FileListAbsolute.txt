@@ -1,0 +1,17 @@
+D:\Bachelor Thesis\Bachelor Thesis\bin\Debug\net6.0\Bachelor Thesis.exe
+D:\Bachelor Thesis\Bachelor Thesis\bin\Debug\net6.0\Bachelor Thesis.deps.json
+D:\Bachelor Thesis\Bachelor Thesis\bin\Debug\net6.0\Bachelor Thesis.runtimeconfig.json
+D:\Bachelor Thesis\Bachelor Thesis\bin\Debug\net6.0\Bachelor Thesis.dll
+D:\Bachelor Thesis\Bachelor Thesis\bin\Debug\net6.0\Bachelor Thesis.pdb
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.csproj.AssemblyReference.cache
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.GeneratedMSBuildEditorConfig.editorconfig
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.AssemblyInfoInputs.cache
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.AssemblyInfo.cs
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.csproj.CoreCompileInputs.cache
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.dll
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\refint\Bachelor Thesis.dll
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.pdb
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.genruntimeconfig.cache
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\ref\Bachelor Thesis.dll
+D:\Bachelor Thesis\Bachelor Thesis\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.csproj.CopyComplete
