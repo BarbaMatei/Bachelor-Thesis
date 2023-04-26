@@ -1,13 +1,15 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Bachelor_Thesis.Domain;
 using Bachelor_Thesis.Services;
 
 string filePath = "../../../Files/fruits.txt";
+string inventoryFilePath = "../../../Files/Inventory.json";
 
-Queue<string> elements = new();
+Queue<InventoryData> customObjects = new();
 
 var readingTask = Task.Factory.StartNew(() =>
 {
-    new FileReadingService(filePath).ReadFromFile(elements);
+    new FileReadingService<InventoryData>(inventoryFilePath).ReadFromFileJson(customObjects);
 });
 
 
@@ -15,11 +17,12 @@ var writingTask = Task.Factory.StartNew(() =>
 {
     while (true)
     {
-        if (elements.Any())
+        if (customObjects.Any())
         {
-            Console.WriteLine(elements.Dequeue());
+            Console.WriteLine(customObjects.Dequeue());
         }
     }
 });
 
 Task.WaitAll(readingTask, writingTask);
+

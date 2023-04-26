@@ -13,3 +13,5 @@ D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\refint\Bachelor Thesis.dll
 D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.pdb
 D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.genruntimeconfig.cache
 D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\ref\Bachelor Thesis.dll
+D:\Bachelor Thesis\Bachelor Thesis\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Bachelor Thesis\Bachelor Thesis\obj\Debug\net6.0\Bachelor Thesis.csproj.CopyComplete

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "3SvXJx2/DWh4FJ2RRsv1+sKj0qgaXf3yirlXQ0dwGeIa+Gw/VTCQJ7+S0jgJjA2YVlcpk7iwIWMmipVUFOuU/A==",
+  "dgSpecHash": "eZoaPC1Nu+NTX7/Oa8twruJQQwAasfITCT04O2EBl4yD2R9DUzt28QEkyLUxw1KiGALj4fajrDwo9cCT9tAEeg==",
   "success": true,
   "projectFilePath": "D:\\Bachelor Thesis\\Bachelor Thesis\\Bachelor Thesis.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\mbarba\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
