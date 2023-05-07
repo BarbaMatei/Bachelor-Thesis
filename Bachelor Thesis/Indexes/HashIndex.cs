@@ -13,6 +13,7 @@ namespace Bachelor_Thesis.Indexes
         private LinkedList<T> _head;
         private List<PropertyInfo> _indexAttributes;
         private int _count;
+        private PropertyInfo _timestampProperty;
 
         public HashIndex(List<PropertyInfo> indexAttributes)
         {
@@ -55,10 +56,36 @@ namespace Bachelor_Thesis.Indexes
 
         public List<T> RemoveElementsBeforeDate(DateTime date)
         {
-            return new List<T>();
+            var elementsRemoved = new List<T>();
+            if(_head != null && _head.Any())
+            {
+                T? firstElement = _head.FirstOrDefault();
+                while(firstElement != null)
+                {
+                    if(IsTimestampBeforeDate(firstElement, date))
+                    {
+                        int hashValue = ComputeHashCode(firstElement);
+                        if (_elements.ContainsKey(hashValue))
+                        {
+                            var collisionList = _elements[hashValue];
+                            collisionList.Remove(firstElement);
+                            _head.RemoveFirst();
+                            _count--;
+
+                            elementsRemoved.Add(firstElement);
+                        }
+                        firstElement = _head.FirstOrDefault();
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return elementsRemoved;
         }
 
-        public void PrintIndex()
+        public void PrintIndexDictionary()
         {
             foreach (var pair in _elements)
             {
@@ -69,9 +96,30 @@ namespace Bachelor_Thesis.Indexes
             }
         }
 
+        public void PrintIndexList()
+        {
+            var firstElem = _head.First;
+            while(firstElem != null)
+            {
+                Console.WriteLine(firstElem.Value.ToString());
+                firstElem = firstElem.Next;
+            }
+        }
+
         public int Count()
         {
             return _count;
+        }
+
+        public void SetTimestampProperty(PropertyInfo timestampProperty)
+        {
+            _timestampProperty = timestampProperty;
+        }
+
+        private bool IsTimestampBeforeDate(T? element, DateTime date)
+        {
+            var timestamp = _timestampProperty.GetValue(element);
+            return timestamp != null && _timestampProperty.PropertyType == typeof(DateTime) && ((DateTime) timestamp < date);
         }
 
         private int ComputeHashCode(T element)

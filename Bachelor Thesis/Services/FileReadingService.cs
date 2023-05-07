@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Bachelor_Thesis.Constants;
+using System.Collections.Concurrent;
 
 namespace Bachelor_Thesis.Services
 {
@@ -13,32 +15,32 @@ namespace Bachelor_Thesis.Services
         private string _filePath;
         private int _timeOffSet;
 
-        public FileReadingService(string path, int timeOffSet = 1)
+        public FileReadingService(string path, int timeOffSet = 20)
         {
             _filePath = path;
-            _timeOffSet = timeOffSet;
+            _timeOffSet = timeOffSet < 20 ? 20 : timeOffSet;
         }
 
-        public void ReadFromFileJson(Queue<T> elements)
+        public void ReadFromFileJson(ConcurrentQueue<T> elements, int maximumElements = 0)
         {
-            using(JsonDocument reader = JsonDocument.Parse(File.OpenRead(_filePath)))
+            using (JsonDocument reader = JsonDocument.Parse(File.OpenRead(_filePath)))
             {
-                var sw = new Stopwatch();
-                sw.Start();
                 JsonElement root = reader.RootElement;
                 T? jsonElement;
-                foreach(JsonElement element in root.EnumerateArray())
+                foreach (JsonElement element in root.EnumerateArray())
                 {
                     jsonElement = JsonSerializer.Deserialize<T>(element.GetRawText());
-                    if(jsonElement != null)
+                    if (jsonElement != null)
                     {
-                        jsonElement.GetType().GetProperty("Timestamp").SetValue(jsonElement, DateTime.Now);
+                        jsonElement.GetType().GetProperty(PropertyNames.Timestamp).SetValue(jsonElement, DateTime.Now);
                         elements.Enqueue(jsonElement);
                     }
-                    //Thread.Sleep(_timeOffSet);
+                    Task.Delay(_timeOffSet).Wait();
+                    if(maximumElements != 0 && elements.Count == maximumElements)
+                    {
+                        break;
+                    }
                 }
-                Console.WriteLine("sync: Running for {0} seconds", sw.Elapsed.TotalSeconds);
-                Console.WriteLine("capacity: {0}", elements.Count);
             }
         }
     }
